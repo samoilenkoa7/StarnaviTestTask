@@ -5,7 +5,7 @@ class Settings(BaseSettings):
     # server settings
 
     database_url: str = 'postgresql+asyncpg://postgres:postgres@db:5432/postgres'
-    server_host: str = '0.0.0.0'
+    server_host: str = '127.0.0.1'
     server_port: int = 8000
 
     # jwt settings
