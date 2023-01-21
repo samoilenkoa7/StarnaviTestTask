@@ -106,8 +106,7 @@ class AuthService:
         user = await self.database_service.get_user_by_username(username)
         if not user:
             raise self.EXCEPTION
-
         if not self._validate_password_hash(user.hashed_password, password):
             raise self.EXCEPTION
-        await self.database_service.update_user_last_login_time(user)
+        await self.database_service.update_user_last_login_time(user) # in django I would use auth signal
         return self._create_token(user)
