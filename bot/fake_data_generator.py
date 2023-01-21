@@ -1,3 +1,5 @@
+import random
+
 from faker import Faker
 
 
@@ -20,7 +22,7 @@ def generate_posts_data(max_posts: int) -> list[dict]:
     """Generates list of dicts with post data"""
     fake = Faker()
     list_of_posts = list()
-    for _ in range(max_posts):
+    for _ in range(random.randrange(1, max_posts)):
         post = dict()
         post['title'] = fake.name()
         list_of_posts.append(post)

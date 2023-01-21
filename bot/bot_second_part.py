@@ -10,8 +10,6 @@ BASE_URL = 'http://127.0.0.1:80'
 with open('bot_config.json', 'r') as config_file:
     config_data = json.load(config_file)
 
-print(config_data)
-
 
 async def signup_exact_amount_of_users(users_amount: int = config_data.get('number_of_users')) -> list:
     auth_token_list = list()
@@ -29,7 +27,6 @@ async def signup_exact_amount_of_users(users_amount: int = config_data.get('numb
 
 async def create_exact_amount_of_posts(post_data: dict, user_credential: str) -> dict:
     async with aiohttp.ClientSession(base_url=BASE_URL) as session:
-        print(session.headers)
         async with session.post('/posts/create', json=post_data,
                                 headers={"WWW-Authenticate": f'',
                                          "Authorization": user_credential,
@@ -52,4 +49,5 @@ async def main(max_posts: int = config_data.get('max_posts_per_user')):
 
 
 if __name__ == '__main__':
-    asyncio.run(main())
+    result = asyncio.run(main())
+    print(result)
