@@ -24,4 +24,4 @@ def get_session():
     try:
         yield session
     finally:
-        session.close()
+        await session.close()
