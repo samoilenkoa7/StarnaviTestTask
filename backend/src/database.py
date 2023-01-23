@@ -19,7 +19,7 @@ async_session = sessionmaker(
 )
 
 
-def get_session():
+async def get_session():
     session = async_session()
     try:
         yield session
